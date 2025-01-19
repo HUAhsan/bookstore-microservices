@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0;
+            color: #f9c74f;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #f9c74f;
+        }
+
+        /* Book List Styles */
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .book-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-card .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #f9c74f;
+        }
+
+        .book-card span {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        /* Button Styles */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            background-color: #f94144;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #f3722c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #f9c74f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore Your Next Adventure</h1>
+    </header>
+    <main>
+        <h2>Our Collection</h2>
+        <div class="book-list">
+            {% for book in books %}
+            <div class="book-card">
+                <div class="title">{{ book.title }}</div>
+                <span>ID: {{ book.book_id }}</span>
+                <span>Price: ${{ book.price }}</span>
+                <span>Stock: {{ book.stock }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="button-container">
+            <a href="http://localhost:5001/add_book">Add a New Book</a>
+            <a href="http://localhost:5002/add_order">Place an Order</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Bookstore. All rights reserved.
+    </footer>
+</body>
+</html>
